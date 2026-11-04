@@ -1,6 +1,7 @@
 # Sistema de Gestión de Cursos — Microservicios con Spring Boot
 
-**Evaluación N° 03** · Desarrollo de Aplicaciones Web · Tecsup
+**Evaluación N° 03** 
+
 **Estudiante:** Faustino Quispe Alexander Oliver
 
 Una academia necesita organizar a sus docentes, sus cursos y las inscripciones de los participantes. El sistema se divide en tres microservicios independientes. Cada uno tiene su propio proyecto, su propio puerto y su propia base de datos.
