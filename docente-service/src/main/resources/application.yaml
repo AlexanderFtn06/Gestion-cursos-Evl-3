@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: docente-service
+  profiles:
+    active: dev

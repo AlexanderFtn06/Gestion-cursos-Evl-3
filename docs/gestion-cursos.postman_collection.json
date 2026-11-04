@@ -1,0 +1,530 @@
+{
+  "info": {
+    "_postman_id": "d520b48e-b062-4849-8d5e-5cd6e8581611",
+    "name": "Gestión de Cursos - Microservicios",
+    "description": "Evaluación N° 03 - Desarrollo de Aplicaciones Web (Tecsup).\nEjecutar las carpetas en orden con los servicios en el perfil dev y las bases _dev vacías.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "docenteUrl",
+      "value": "http://localhost:8081/api/docentes"
+    },
+    {
+      "key": "cursoUrl",
+      "value": "http://localhost:8082/api/cursos"
+    },
+    {
+      "key": "inscripcionUrl",
+      "value": "http://localhost:8083/api/inscripciones"
+    }
+  ],
+  "item": [
+    {
+      "name": "1. Docentes",
+      "item": [
+        {
+          "name": "Registrar docente (201)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{docenteUrl}}",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombres\": \"Ricardo\",\n  \"apellidos\": \"Mendoza Rojas\",\n  \"dni\": \"45781236\",\n  \"correo\": \"rmendoza@academia.pe\",\n  \"especialidad\": \"Desarrollo Web\",\n  \"estado\": \"ACTIVO\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Registrar segundo docente (201)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{docenteUrl}}",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombres\": \"Lucía\",\n  \"apellidos\": \"Fernández Castro\",\n  \"dni\": \"70214589\",\n  \"correo\": \"lfernandez@academia.pe\",\n  \"especialidad\": \"Base de Datos\",\n  \"estado\": \"ACTIVO\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Listar docentes (200)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{docenteUrl}}"
+          }
+        },
+        {
+          "name": "Buscar docente por ID (200)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{docenteUrl}}/1"
+          }
+        },
+        {
+          "name": "Actualizar docente (200)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{docenteUrl}}/2",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombres\": \"Lucía\",\n  \"apellidos\": \"Fernández Castro\",\n  \"dni\": \"70214589\",\n  \"correo\": \"lucia.fernandez@academia.pe\",\n  \"especialidad\": \"Ciencia de Datos\",\n  \"estado\": \"ACTIVO\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Error - datos inválidos (400)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{docenteUrl}}",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombres\": \"\",\n  \"apellidos\": \"Pérez\",\n  \"dni\": \"123\",\n  \"correo\": \"correo-malo\",\n  \"especialidad\": \"\",\n  \"estado\": \"VIGENTE\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Error - DNI duplicado (409)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{docenteUrl}}",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombres\": \"Ricardo\",\n  \"apellidos\": \"Mendoza Rojas\",\n  \"dni\": \"45781236\",\n  \"correo\": \"rmendoza@academia.pe\",\n  \"especialidad\": \"Desarrollo Web\",\n  \"estado\": \"ACTIVO\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Error - ID inexistente (404)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{docenteUrl}}/99"
+          }
+        }
+      ]
+    },
+    {
+      "name": "2. Cursos",
+      "item": [
+        {
+          "name": "Registrar curso (201)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{cursoUrl}}",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Spring Boot desde cero\",\n  \"duracion\": 40,\n  \"precio\": 450.0,\n  \"idDocente\": 1,\n  \"estado\": \"ACTIVO\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Registrar segundo curso (201)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{cursoUrl}}",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"MySQL para desarrolladores\",\n  \"duracion\": 24,\n  \"precio\": 300.0,\n  \"idDocente\": 2,\n  \"estado\": \"ACTIVO\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Listar cursos (200)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{cursoUrl}}"
+          }
+        },
+        {
+          "name": "Buscar curso por ID (200)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{cursoUrl}}/1"
+          }
+        },
+        {
+          "name": "Listar cursos por docente (200)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{cursoUrl}}/docente/1"
+          }
+        },
+        {
+          "name": "Actualizar curso (200)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{cursoUrl}}/2",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"MySQL avanzado\",\n  \"duracion\": 30,\n  \"precio\": 380.0,\n  \"idDocente\": 2,\n  \"estado\": \"ACTIVO\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Error - duración y precio inválidos (400)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{cursoUrl}}",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"\",\n  \"duracion\": 0,\n  \"precio\": -50,\n  \"idDocente\": 1,\n  \"estado\": \"ACTIVO\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Error - JSON mal formado (400)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{cursoUrl}}",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Java\",\n  \"duracion\": \"cuarenta\",\n  \"precio\": 100,\n  \"idDocente\": 1,\n  \"estado\": \"ACTIVO\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Error - ID inexistente (404)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{cursoUrl}}/99"
+          }
+        }
+      ]
+    },
+    {
+      "name": "3. Inscripciones",
+      "item": [
+        {
+          "name": "Registrar inscripción (201)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{inscripcionUrl}}",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"idCurso\": 1,\n  \"nombres\": \"Carlos\",\n  \"apellidos\": \"Quispe Mamani\",\n  \"dni\": \"74125896\",\n  \"correo\": \"carlos.quispe@gmail.com\",\n  \"fecha\": \"2026-11-03\",\n  \"estado\": \"PENDIENTE\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Registrar segunda inscripción (201)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{inscripcionUrl}}",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"idCurso\": 1,\n  \"nombres\": \"Ana\",\n  \"apellidos\": \"Torres Vega\",\n  \"dni\": \"71589632\",\n  \"correo\": \"ana.torres@gmail.com\",\n  \"fecha\": \"2026-11-03\",\n  \"estado\": \"PENDIENTE\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Listar inscripciones (200)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{inscripcionUrl}}"
+          }
+        },
+        {
+          "name": "Buscar inscripción por ID (200)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{inscripcionUrl}}/1"
+          }
+        },
+        {
+          "name": "Listar inscripciones por curso (200)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{inscripcionUrl}}/curso/1"
+          }
+        },
+        {
+          "name": "Actualizar inscripción (200)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{inscripcionUrl}}/2",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"idCurso\": 1,\n  \"nombres\": \"Ana\",\n  \"apellidos\": \"Torres Vega\",\n  \"dni\": \"71589632\",\n  \"correo\": \"atorres@outlook.com\",\n  \"fecha\": \"2026-11-03\",\n  \"estado\": \"CONFIRMADA\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Cambiar estado (200)",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{inscripcionUrl}}/1/estado",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"estado\": \"CONFIRMADA\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Error - datos inválidos (400)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{inscripcionUrl}}",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"idCurso\": null,\n  \"nombres\": \"\",\n  \"apellidos\": \"Ruiz\",\n  \"dni\": \"12ab\",\n  \"correo\": \"ruiz@\",\n  \"fecha\": \"2030-01-01\",\n  \"estado\": \"ACTIVO\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Error - estado inválido (400)",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{inscripcionUrl}}/1/estado",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"estado\": \"APROBADA\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Error - inscripción duplicada (409)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{inscripcionUrl}}",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"idCurso\": 1,\n  \"nombres\": \"Carlos\",\n  \"apellidos\": \"Quispe Mamani\",\n  \"dni\": \"74125896\",\n  \"correo\": \"carlos.quispe@gmail.com\",\n  \"fecha\": \"2026-11-03\",\n  \"estado\": \"PENDIENTE\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Error - ID inexistente (404)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{inscripcionUrl}}/99"
+          }
+        }
+      ]
+    },
+    {
+      "name": "4. Eliminaciones",
+      "item": [
+        {
+          "name": "Eliminar inscripción (200)",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": "{{inscripcionUrl}}/2"
+          }
+        },
+        {
+          "name": "Eliminar curso (200)",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": "{{cursoUrl}}/2"
+          }
+        },
+        {
+          "name": "Eliminar docente (200)",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": "{{docenteUrl}}/2"
+          }
+        }
+      ]
+    }
+  ]
+}

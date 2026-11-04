@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: curso-service
+  profiles:
+    active: dev

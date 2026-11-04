@@ -1,0 +1,14 @@
+server:
+  port: 9081
+  error:
+    include-stacktrace: never
+
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:mysql://servidor-prod:3306/bd2_docente}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: false

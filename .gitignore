@@ -1,0 +1,10 @@
+# Compilados de Maven
+target/
+
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
