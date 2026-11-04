@@ -8,6 +8,7 @@ Una academia necesita organizar a sus docentes, sus cursos y las inscripciones d
 
 ## Arquitectura
 
+![Diagrama de arquitectura](docs/diagrama-arquitectura.png)
 
 
 | Microservicio | Puerto (dev) | Base de datos (dev) | Responsabilidad |
